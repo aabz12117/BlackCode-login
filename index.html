@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DarkCode | منظمة العمليات السرية</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;400;700;900&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            neon: {
+              blue: '#00d9ff',
+              dark: '#001f3f',
+              alert: '#ff003c',
+            },
+            bg: {
+              main: '#050505',
+              panel: '#0a0a0a',
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            mono: ['"Share Tech Mono"', 'monospace'],
+          },
+          animation: {
+            'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'glitch': 'glitch 1s linear infinite',
+            'scanline': 'scanline 8s linear infinite',
+            'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+            'shimmer': 'shimmer 2s linear infinite',
+          },
+          keyframes: {
+            glitch: {
+              '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+              '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+              '62%': { transform: 'translate(0,0) skew(5deg)' },
+            },
+            scanline: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(100%)' }
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            shimmer: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' }
+            }
+          }
+        },
+      },
+      plugins: [
+        function ({ addUtilities }) {
+          const newUtilities = {
+            '.animation-delay-75': {
+              'animation-delay': '75ms',
+            },
+            '.animation-delay-150': {
+              'animation-delay': '150ms',
+            },
+          }
+          addUtilities(newUtilities)
+        }
+      ]
+    }
+  </script>
+  <style>
+    body {
+      background-color: #000;
+      color: #e0f7ff;
+      overflow: hidden;
+      /* Prevent native scroll, handle internally if needed */
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .neon-box {
+      box-shadow: 0 0 5px #00d9ff40, inset 0 0 10px #00d9ff20;
+      border: 1px solid rgba(0, 217, 255, 0.3);
+    }
+
+    .scanline-overlay {
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 0) 50%,
+          rgba(0, 0, 0, 0.2) 50%,
+          rgba(0, 0, 0, 0.2));
+      background-size: 100% 4px;
+      position: fixed;
+      pointer-events: none;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      opacity: 0.15;
+    }
+  </style>
+  <script type="module" crossorigin src="/BlackCode-login/assets/index-B67b3zTi.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <div class="scanline-overlay animate-scanline"></div>
+</body>
+
+</html>
